@@ -1,4 +1,5 @@
 # BizPulse — Business Intelligence & Performance Dashboard
+> A full-stack business intelligence dashboard for tracking revenue, transactions, customers, and business performance through interactive analytics and visual reports.
 
 BizPulse is a full-stack Business Intelligence and Data Analytics dashboard designed to help businesses monitor revenue, transactions, customers, and overall performance through an interactive web interface.
 
