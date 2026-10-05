@@ -227,7 +227,7 @@ function TransactionsPage() {
   });
 
   const loadTransactions = () => {
-    fetch("http://localhost:5000/api/transactions")
+    fetch("/api/transactions")
       .then((response) => response.json())
       .then((data) => {
         setTransactions(data);
@@ -259,7 +259,7 @@ function TransactionsPage() {
 
       if (editingId) {
         response = await fetch(
-          `http://localhost:5000/api/transactions/${editingId}`,
+          `/api/transactions/${editingId}`,
           {
             method: "PUT",
             headers: {
@@ -270,7 +270,7 @@ function TransactionsPage() {
         );
       } else {
         response = await fetch(
-          "http://localhost:5000/api/transactions",
+          "/api/transactions",
           {
             method: "POST",
             headers: {
@@ -312,7 +312,7 @@ function TransactionsPage() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/transactions/${id}`,
+        `/api/transactions/${id}`,
         {
           method: "DELETE",
         }
@@ -998,7 +998,7 @@ function App() {
   const [activePage, setActivePage] = useState("dashboard");
 
 useEffect(() => {
-  fetch("http://localhost:5000/api/dashboard")
+  fetch("/api/dashboard")
     .then((response) => response.json())
     .then((data) => {
       setDashboardData(data);
