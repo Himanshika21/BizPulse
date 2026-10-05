@@ -298,10 +298,9 @@ const frontendPath = path.join(__dirname, "..", "dist");
 app.use(express.static(frontendPath));
 
 // React SPA fallback
-app.get("*", (req, res) => {
+app.get("/{*splat}", (req, res) => {
   res.sendFile(path.join(frontendPath, "index.html"));
 });
-
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`BizPulse server running on port ${PORT}`);
 });
