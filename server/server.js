@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const pool = require("./db");
 
 const app = express();
@@ -184,7 +185,7 @@ app.get("/api/transactions", async (req, res) => {
 // START SERVER
 // ===============================
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 // =================================
 // CREATE TRANSACTION
 // =================================
@@ -291,10 +292,16 @@ app.put("/api/transactions/:id", async (req, res) => {
     });
   }
 });
-app.listen(PORT, () => {
+// Serve React frontend in production
+const frontendPath = path.join(__dirname, "..", "dist");
 
-  console.log(
-    `BizPulse server running on http://localhost:${PORT}`
-  );
+app.use(express.static(frontendPath));
 
+// React SPA fallback
+app.get("*", (req, res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
+});
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`BizPulse server running on port ${PORT}`);
 });
